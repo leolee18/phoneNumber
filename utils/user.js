@@ -2,6 +2,20 @@ let mServer = require('server.js');
 let mLogin = require('mLogin.js');
 
 let userPhone = '';
+let mCod = '';
+
+function init(sucFun){
+  wx.login({
+    success: function (res) {
+      if (res.code) {
+        mCod = res.code;
+        if (typeof sucFun == 'function') sucFun(mCod);
+      } else {
+        console.log('获取用户登录态失败！' + res.errMsg)
+      }
+    }
+  });
+}
 
 function mUserPhone(mSend, sucFun) {
   mServer.serverReq('wx/phone/bind', mSend, function (data) {
@@ -18,18 +32,10 @@ function setPhone(detail, sucFun){
   }
   let mSendObj = {};
   mSendObj.token = mLogin.getToken();
+  mSendObj.code = mCod;
   if (detail.encryptedData) mSendObj.encrpytdata = detail.encryptedData;
   if (detail.iv) mSendObj.encrpytiv = detail.iv;
-  wx.login({
-    success: function (res) {
-      if (res.code) {
-        mSendObj.code = res.code;
-        mUserPhone(mSendObj, sucFun);
-      } else {
-        console.log('获取用户登录态失败！' + res.errMsg)
-      }
-    }
-  });
+  mUserPhone(mSendObj, sucFun);
 }
 
 
@@ -50,6 +56,7 @@ function getPhone(){
 
 
 module.exports = {
+  init: init,
   setPhone: setPhone,
   getPhone: getPhone
 }
