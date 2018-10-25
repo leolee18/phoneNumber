@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/wifi/wifi",
     "pages/login/login",
     "pages/login/logph"
   ],

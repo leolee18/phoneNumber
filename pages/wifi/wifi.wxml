@@ -1,0 +1,7 @@
+<view bindtap='binButn' class='wifi'>
+  <view wx:for="{{mList}}" wx:key="listCou" wx:for-index="idx" id='{{idx}}' class='wifi-one actob'>
+    <text wx:if="{{item.mb}}" class='wifi-text evno'>{{item.SSID}}</text>
+    <text wx:else class='evno'>{{item.SSID}}</text>
+  </view>
+  没有更多wifi
+</view>

@@ -1,0 +1,25 @@
+.wifi{
+  position: relative;
+  width: 100%;
+  padding: 60rpx;
+  font-size: 30rpx;
+  color: #ccc;
+  text-align: center;
+  box-sizing: border-box;
+}
+.wifi-one{
+  position: relative;
+  margin: 10rpx auto;
+  width: 50%;
+  height: 70rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 70rpx;
+  background-color: rgb(4, 172, 68);
+  overflow: hidden;
+}
+.wifi-text{
+  color: #f00;
+}

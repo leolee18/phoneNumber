@@ -8,3 +8,10 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.actob:active{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.evno{
+    pointer-events: none;
+}
