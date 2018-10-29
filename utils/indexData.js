@@ -1,18 +1,49 @@
 let mServer = require('server.js');
 let err = require('inteError.js');
 
-let indSwi = [];
+let mOptions = null;
+let mUrl = '';
+let mUrlId = '';
 
-//缓存轮播列表
-function setIndSwi(sucFun) {
-  mServer.serverReq('slideshow/list', {}, function (data) {
-    //console.log('listSwi:'+JSON.stringify(data));
+function init(mOpt, sucFun){
+  mOptions = mOpt;
+  setUrlId(mOptions, sucFun);
+}
+function setUrlId(mOpti, sucFun){
+  if (mOpti && mOpti.id && mOpti.id != ''){
+    mUrlId = mOpti.id;
+  }
+  if (mOpti && mOpti.q && mOpti.q != '') {
+    mUrl = decodeURIComponent(mOpti.q);
+    mUrlId = getQrParam(mUrl,'id');
+  }
+  if (typeof sucFun == 'function') sucFun(mUrl, mUrlId);
+}
+function getQrParam(mStr, mName) {
+  let mUrlArr = mStr.split("?");
+  if (mUrlArr && mUrlArr.length > 1) {
+    let mParArr = mUrlArr[1].split("&");
+    let mArr;
+    for (var i = 0; i < mParArr.length; i++) {
+      mArr = mParArr[i].split("=");
+      if (mArr != null && mArr[0] == mName) {
+        return mArr[1];
+      }
+    }
+  }
+  return "";
+}
+
+function setIndUrl(sucFun) {
+  if (mUrlId == ''){
+    wx.showToast({ title: '没有找到相应的页面', icon: 'none', duration: 1500 });
+    return;
+  }
+  mServer.serverReq('wx/domain', { code: mUrlId }, function (data) {
+    //console.log('domain:'+JSON.stringify(data));
+    mUrl = data.items.domain;
     if (data.result === 'success') {
-      indSwi = data.items;
-      try {
-        wx.setStorageSync('myIndSwi', JSON.stringify(indSwi));
-      } catch (e) { }
-      if (typeof sucFun == 'function') sucFun(indSwi);
+      if (typeof sucFun == 'function') sucFun(mUrl);
     }else{
       err.inteE(data);
     }
@@ -21,5 +52,7 @@ function setIndSwi(sucFun) {
 
 
 module.exports = {
-  setIndSwi: setIndSwi
+  init: init,
+  getQrParam: getQrParam,
+  setIndUrl: setIndUrl
 }

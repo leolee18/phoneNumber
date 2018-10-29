@@ -18,7 +18,7 @@ function init(sucFun){
 }
 
 function mUserPhone(mSend, sucFun) {
-  mServer.serverReq('wx/phone/bind', mSend, function (data) {
+  mServer.serverReq('wx/login', mSend, function (data) {
     //console.log('phone:' + JSON.stringify(data));
     if (data.result === 'success') {
       if (typeof sucFun == 'function') sucFun(data);
@@ -30,12 +30,15 @@ function setPhone(detail, sucFun){
   if (detail.errMsg !== 'getPhoneNumber:ok') {
     return;
   }
-  let mSendObj = {};
-  mSendObj.token = mLogin.getToken();
-  mSendObj.code = mCod;
-  if (detail.encryptedData) mSendObj.encrpytdata = detail.encryptedData;
-  if (detail.iv) mSendObj.encrpytiv = detail.iv;
-  mUserPhone(mSendObj, sucFun);
+
+  init(function (mCod){
+    let mSendObj = {};
+    mSendObj.token = mLogin.getToken();
+    mSendObj.code = mCod;
+    if (detail.encryptedData) mSendObj.encrpytdata = detail.encryptedData;
+    if (detail.iv) mSendObj.encrpytiv = detail.iv;
+    mUserPhone(mSendObj, sucFun);
+  });
 }
 
 

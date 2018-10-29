@@ -3,7 +3,7 @@ function serverReq(mUrl,mData,sucFun,errFun) {
       url: serAdd(mUrl),
       data: mData,
       header: {
-        "content-type": "application/x-www-form-urlencoded"
+        "content-type": "application/json"
       },
       method:"POST",
       success: function(res) {
@@ -31,18 +31,18 @@ function getNetType(){
   });
 }
 function serAdd(addres){
-  var serInter = 'https://app.psyrogers.vip/';
+  var serInter = 'https://wxappmarket.familyktv.com/';
 	
-  var kc = 'biz/wxapp/';
+  var kc = 'market/';
 	var returnStr = serInter;
 	switch (addres){
     case 'wx/login':
-    case 'user/get':
+    case 'wx/domain':
 			returnStr = serInter+kc+addres;
 			break;
       break;  		
 		case 'local':
-      returnStr = 'http://app.psyrogers.vip/';
+      returnStr = 'http://wxappmarket.familyktv.com/';
 			break;	
 		default:
 			returnStr = serInter;
