@@ -19,7 +19,7 @@ function init(sucFun){
 
 function mUserPhone(mSend, sucFun) {
   mServer.serverReq('wx/login', mSend, function (data) {
-    //console.log('phone:' + JSON.stringify(data));
+    console.log('phone:' + JSON.stringify(data));
     if (data.result === 'success') {
       if (typeof sucFun == 'function') sucFun(data);
     }

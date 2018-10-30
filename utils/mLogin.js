@@ -35,7 +35,7 @@ function loginCode(sucFun) {
 }
 function mUserCode(mSend, sucFun) {
   mServer.serverReq('wx/login', mSend, function (data) {
-    //console.log('login:'+JSON.stringify(data));
+    console.log('login:'+JSON.stringify(data));
     if (data.result === 'success') {
       mToken = data.items.token;
       try {
@@ -43,7 +43,7 @@ function mUserCode(mSend, sucFun) {
       } catch (e) { }
       mUserToken(mToken, function (mToken){
         if (typeof sucFun == 'function') sucFun(mToken);
-      });
+      }); 全名扫码通请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介
     }
   });
 }

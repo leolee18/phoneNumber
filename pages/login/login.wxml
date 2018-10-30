@@ -1,5 +1,5 @@
  <view class='cont'>
   <image src='../../imgs/log_lo.png' class='log-himg' mode='widthFix'></image>
-  <text class='log-ht'>全民扫码通\n<text class='log-htn'>扫描二维码对应的详细介绍</text></text>
+  <text class='log-ht'>全民扫码通\n<text class='log-htn'>请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍</text></text>
   <button class='log-but' open-type="getUserInfo" bindgetuserinfo="getUserInfo"><image src='../../imgs/log_we.png' class='log-bimg' mode='widthFix'></image>使用微信登录</button>
  </view>
