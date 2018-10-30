@@ -10,12 +10,12 @@ function init(mOpt, sucFun){
   setUrlId(mOptions, sucFun);
 }
 function setUrlId(mOpti, sucFun){
-  if (mOpti && mOpti.id && mOpti.id != ''){
-    mUrlId = mOpti.id;
+  if (mOpti && mOpti.code && mOpti.code != ''){
+    mUrlId = mOpti.code;
   }
   if (mOpti && mOpti.q && mOpti.q != '') {
     mUrl = decodeURIComponent(mOpti.q);
-    mUrlId = getQrParam(mUrl,'id');
+    mUrlId = getQrParam(mUrl,'code');
   }
   if (typeof sucFun == 'function') sucFun(mUrl, mUrlId);
 }
@@ -50,9 +50,13 @@ function setIndUrl(sucFun) {
   });
 }
 
+function getUrlId(){
+  return mUrlId;
+}
 
 module.exports = {
   init: init,
   getQrParam: getQrParam,
-  setIndUrl: setIndUrl
+  setIndUrl: setIndUrl,
+  getUrlId: getUrlId
 }

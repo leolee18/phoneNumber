@@ -13,7 +13,7 @@ Page({
       if (!myUser || !myUser.userChecked) {
         wx.redirectTo({ url: 'login' });
       }else{
-        wx.redirectTo({ url: '/pages/index/index' });
+        wx.reLaunch({ url: '/pages/index/index' });
       }
     });
   }

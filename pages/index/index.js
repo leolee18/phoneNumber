@@ -17,5 +17,12 @@ Page({
         })
       }
     });
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '全民扫码通',
+      desc: '全民扫码通',
+      path: 'pages/index/index?code=' + indDa.getUrlId()
+    }
   }
 })
