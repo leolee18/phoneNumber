@@ -43,18 +43,13 @@ function mUserCode(mSend, sucFun) {
       } catch (e) { }
       mUserToken(mToken, function (mToken){
         if (typeof sucFun == 'function') sucFun(mToken);
-      }); 全名扫码通请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介绍请允许授权获取产品详细介
+      });
     }
   });
 }
 function mUserToken(mToken, sucFun) {
-  if (mUser){
-    if (typeof sucFun == 'function') sucFun(mToken);
-    pageJump();
-    return;
-  }
   mServer.serverReq('wx/login', { token: mToken }, function (data) {
-    //console.log('getUser:' +JSON.stringify(data));
+    console.log('getUser:' +JSON.stringify(data));
     if (data.result === 'success') {
       mUser = data.items;
       if (typeof sucFun == 'function') sucFun(mToken);
@@ -71,7 +66,7 @@ function pageJump(){
       let mCur = getCurrentPages()[(getCurrentPages().length - 1)];
       if (mCur.route !== 'pages/login/logph' && pageLogin) {
         pageLogin = false;
-        wx.navigateTo({ url: '/pages/login/logph' });
+        wx.redirectTo({ url: '/pages/login/logph' });
       }
     }
   } else if (!mUser.userChecked) {

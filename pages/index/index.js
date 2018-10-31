@@ -17,6 +17,11 @@ Page({
         })
       }
     });
+    setTimeout(function(){
+      mLogin.getUserInfo(function (mToken) {
+        indDa.addCodeUser(mToken);
+      });
+    },5000);
   },
   onShareAppMessage: function () {
     return {

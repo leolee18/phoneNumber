@@ -54,9 +54,18 @@ function getUrlId(){
   return mUrlId;
 }
 
+/////统计////////////////////////////////////
+function addCodeUser(mToken) {
+  mServer.serverReq('wx/addCodeUser', { code: mUrlId, token: mToken}, function (data) {
+    console.log('addCodeUser:'+JSON.stringify(data));
+  });
+}
+
+
 module.exports = {
   init: init,
   getQrParam: getQrParam,
   setIndUrl: setIndUrl,
-  getUrlId: getUrlId
+  getUrlId: getUrlId,
+  addCodeUser: addCodeUser
 }

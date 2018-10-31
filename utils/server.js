@@ -13,10 +13,7 @@ function serverReq(mUrl,mData,sucFun,errFun) {
         if (typeof errFun == 'function'){
           errFun(res.data);
         }else{
-          //if (res.errMsg.indexOf('TLS 版本必') == -1){
-            wx.showModal({ title: '小程序提示', content: '网络错误，请稍后重试', showCancel: false });
-            wx.hideToast();
-          //}
+          wx.showToast({ title:'网络错误，请稍后重试', icon: 'none', duration: 1500 });
         }
       }
     });
@@ -38,6 +35,7 @@ function serAdd(addres){
 	switch (addres){
     case 'wx/login':
     case 'wx/domain':
+    case 'wx/addCodeUser':
 			returnStr = serInter+kc+addres;
 			break;
       break;  		
