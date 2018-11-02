@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/login/logph",
     "pages/index/index",
     "pages/wifi/wifi",
-    "pages/login/login",
-    "pages/login/logph"
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -6,22 +6,14 @@ Page({
   },
   onLoad: function (options) {
     let that = this;
-    wx.showToast({ title: '请求处理中……', mask: true, icon: 'loading', duration: 10000 });
-    indDa.init(options,function(mUrl,mUrlId){
-      wx.hideToast();
-      if (mUrl != ''){
-        that.setData({ weburl: mUrl});
-      } else if (mUrlId != ''){
-        indDa.setIndUrl(function (data) {
-          that.setData({ weburl: data });
-        })
-      }
-    });
-    setTimeout(function(){
-      mLogin.getUserInfo(function (mToken) {
-        indDa.addCodeUser(mToken);
-      });
-    },5000);
+
+    if (indDa.getUrl() != '') {
+      that.setData({ weburl: indDa.getUrl() });
+    } else if (indDa.getUrlId() != '') {
+      indDa.setIndUrl(function (data) {
+        that.setData({ weburl: data });
+      })
+    }
   },
   onShareAppMessage: function () {
     return {

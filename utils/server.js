@@ -1,28 +1,38 @@
+let mLoadNum = 0;
 function serverReq(mUrl,mData,sucFun,errFun) {
-    wx.request({
-      url: serAdd(mUrl),
-      data: mData,
-      header: {
-        "content-type": "application/json"
-      },
-      method:"POST",
-      success: function(res) {
-        if (typeof sucFun == 'function') sucFun(res.data);
-      },
-      fail:function(res){
-        if (typeof errFun == 'function'){
+  mLoadNum = 0;
+  mServ(mUrl, mData, sucFun, errFun);
+}
+function mServ(mUrl, mData, sucFun, errFun) {
+  wx.request({
+    url: serAdd(mUrl),
+    data: mData,
+    header: {
+      "content-type": "application/json"
+    },
+    method: "POST",
+    success: function (res) {
+      if (typeof sucFun == 'function') sucFun(res.data);
+    },
+    fail: function (res) {
+      if (mLoadNum < 3) {
+        setTimeout(mServ, 1000);
+      } else {
+        if (typeof errFun == 'function') {
           errFun(res.data);
-        }else{
-          wx.showToast({ title:'网络错误，请稍后重试', icon: 'none', duration: 1500 });
+        } else {
+          wx.showToast({ title: '网络错误，请稍后重试', icon: 'none', duration: 1500 });
         }
       }
-    });
+      mLoadNum++;
+    }
+  });
 }
 function getNetType(){
   wx.getNetworkType({
     success: function (res) {
       if (res.networkType == 'none') {
-        wx.showModal({ title: '温馨提示', content: '网络错误，请稍后重试', showCancel: false });
+        wx.showToast({ title: '网络错误，请稍后重试', icon: 'none', duration: 1500 });
       }
     }
   });

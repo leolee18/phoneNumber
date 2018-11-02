@@ -77,6 +77,14 @@ function pageJump(){
         wx.navigateTo({ url: '/pages/login/login' });
       }
     }
+  } else if (mUser.mobileChecked && mUser.userChecked){
+    if (getCurrentPages().length >= 1) {
+      let mCur = getCurrentPages()[(getCurrentPages().length - 1)];
+      if (mCur.route !== '/pages/index/index' && pageLogin) {
+        pageLogin = false;
+        wx.redirectTo({ url: '/pages/index/index' });
+      }
+    }
   }
 }
 

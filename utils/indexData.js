@@ -53,6 +53,9 @@ function setIndUrl(sucFun) {
 function getUrlId(){
   return mUrlId;
 }
+function getUrl() {
+  return mUrl;
+}
 
 /////统计////////////////////////////////////
 function addCodeUser(mToken) {
@@ -67,5 +70,6 @@ module.exports = {
   getQrParam: getQrParam,
   setIndUrl: setIndUrl,
   getUrlId: getUrlId,
+  getUrl: getUrl,
   addCodeUser: addCodeUser
 }
