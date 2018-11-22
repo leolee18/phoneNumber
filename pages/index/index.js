@@ -16,6 +16,7 @@ Page({
     }
   },
   onShareAppMessage: function () {
+    wx.reportMonitor('1001', 1);
     return {
       title: '全民扫码通',
       desc: '全民扫码通',

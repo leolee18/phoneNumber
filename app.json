@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/wifi/mp3Con",
     "pages/login/logph",
     "pages/index/index",
     "pages/wifi/wifi",
