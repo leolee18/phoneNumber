@@ -1,0 +1,17 @@
+<template name="miMp3">
+  <view class='my-cont'>
+    <image  wx:if='{{mCon.bgimg && mCon.bgimg != ""}}' src='{{mCon.bgimg}}' mode='aspectFill' class='my-cont-bg'></image>
+    <view bindtap='mpbind' class='my-cont-fv'>
+      <view id='myConP' class='my-contf-p'>
+        <image wx:if='{{mCon.playStates}}' src='../../imgs/my_pu.png' mode='widthFix' class='my-contf-ipu'></image> 
+        <image wx:else src='../../imgs/my_pl.png' mode='widthFix' class='my-contf-ipl'></image>
+      </view>
+      <view class='my-contf-ts'><text>{{mCon.curStr}}</text></view>
+      <view class='my-contf-t'>
+        <slider bindchange="sliderChange" bindchanging="sliderChanging" step="1" value="{{mCon.sliderValue}}" backgroundColor="rgba(255,255, 255, 0.5)" activeColor="#5695ff" block-color="#5695ff" block-size="12" max="100" class='my-sli'/>
+      </view>
+      <view class='my-contf-ts'><text>{{mCon.durStr}}</text></view>
+      <!-- <view class='my-contf-qp'><image src='../../imgs/my_qp.png' mode='widthFix' class='my-contf-ipl'></image></view> -->
+    </view>
+  </view>
+</template>

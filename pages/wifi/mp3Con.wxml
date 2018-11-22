@@ -1,15 +1,3 @@
-<view class='my-cont'>
-  <image src='http://media.psyrogers.vip/2018-11-15_15/2586091451022950_63_11542265128_.pic.jpg' mode='aspectFill' class='my-cont-bg'></image>
-  <view bindtap='mpbind' class='my-cont-fv'>
-    <view id='myConP' class='my-contf-p'>
-      <image wx:if='{{mCon.playStates}}' src='../../imgs/my_pu.png' mode='widthFix' class='my-contf-ipu'></image> 
-      <image wx:else src='../../imgs/my_pl.png' mode='widthFix' class='my-contf-ipl'></image>
-    </view>
-    <view class='my-contf-ts'><text>00:00</text></view>
-    <view class='my-contf-t'>
-      <slider bindchange="sliderChange" bindchanging="sliderChanging" step="1" value="{{mCon.sliderValue}}" backgroundColor="rgba(255,255, 255, 0.5)" activeColor="#5695ff" block-color="#5695ff" block-size="12" max="100" class='my-sli'/>
-    </view>
-    <view class='my-contf-ts'><text>00:00</text></view>
-    <view class='my-contf-qp'><image src='../../imgs/my_qp.png' mode='widthFix' class='my-contf-ipl'></image></view>
-  </view>
-</view>
+<import src="../../temp/mimp3.wxml"/>
+
+<template is="miMp3" data="{{mCon}}"/>
