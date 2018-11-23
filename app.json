@@ -11,5 +11,8 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "全民扫码通",
     "navigationBarTextStyle":"black"
-  }
+  },
+  "requiredBackgroundModes":[
+    "audio"
+  ]
 }

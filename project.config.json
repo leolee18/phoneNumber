@@ -12,7 +12,7 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
+	"libVersion": "2.4.0",
 	"appid": "wx1531e3c36ff92a68",
 	"projectname": "phoneNum",
 	"debugOptions": {
