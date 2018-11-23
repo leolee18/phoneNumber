@@ -4,11 +4,13 @@ let miCont = null;
 let miObj= null;
 let mUpCon = null;
 let mDurB = true;
+let mStop = false;
 
 function init(myCon,mObj) {
   miCont = myCon;
   miObj = mObj;
   mDurB = true;
+  mStop = false;
 
   setBgOnFun();
   setBgAuInit(mObj);
@@ -23,10 +25,12 @@ function setBgOnFun(){
     if (typeof mUpCon == 'function') mUpCon(miCont);
   });
   bgAud.onStop(function () {
+    mStop = true;
     miCont.playStates = false;
     if (typeof mUpCon == 'function') mUpCon(miCont);
   });
   bgAud.onEnded(function () {
+    mStop = true;
     miCont.playStates = false;
     if (typeof mUpCon == 'function') mUpCon(miCont);
   });
@@ -73,7 +77,7 @@ function setPthis(that) {
   that.mpbind = function(e){
     let mag = e.target;
     if (mag.id === 'myConP') {
-      if (bgAud.src != ''){
+      if (bgAud.src != '' && !mStop){
         bgAud.paused ? bgAud.play():bgAud.pause();
       } else if (miObj.src != ''){
         setBgAuInit(miObj);
@@ -92,10 +96,13 @@ function setPthis(that) {
   }
 }
 
-
+function pUnload(){
+  bgAud.stop();
+}
 
 module.exports = {
   init: init,
   setUpCont: setUpCont,
-  setPthis: setPthis
+  setPthis: setPthis,
+  pUnload: pUnload
 }
