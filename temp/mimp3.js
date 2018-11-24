@@ -5,6 +5,7 @@ let miObj= null;
 let mUpCon = null;
 let mDurB = true;
 let mStop = false;
+let mTimFun = null;
 
 function init(myCon,mObj) {
   miCont = myCon;
@@ -47,6 +48,7 @@ function setBgOnFun(){
     if (miCont.updateState) {
       let sliderValue = bgAud.currentTime / bgAud.duration * 100;
       miCont.sliderValue = sliderValue;
+      if (typeof mTimFun == 'function') mTimFun(bgAud.currentTime);
       if (typeof mUpCon == 'function') mUpCon(miCont);
     }
   })
@@ -86,6 +88,7 @@ function setPthis(that) {
   }
   that.sliderChanging = function(e){
     miCont.updateState = false;
+    miCont.sliderValue = e.detail.value;
     if (typeof mUpCon == 'function') mUpCon(miCont);
   }
   that.sliderChange = function (e) {
@@ -94,6 +97,7 @@ function setPthis(that) {
     miCont.updateState = true;
     if (typeof mUpCon == 'function') mUpCon(miCont);
   }
+  mTimFun = that.playTimeSend;
 }
 
 function pUnload(){

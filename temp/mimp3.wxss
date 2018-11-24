@@ -13,13 +13,27 @@
   width: 100%;
   z-index: 0;
 }
+.my-cont-cp{
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+  pointer-events: none;
+}
+.my-contf-pal{
+  position: relative;
+  width: 140rpx;
+  height: 140rpx;
+  top: 100rpx;
+  left: 305rpx;
+  overflow: hidden;
+}
 .my-cont-fv{
   position: absolute;
   width: 100%;
   height: 60rpx;
   bottom: 0;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.33);
 }
 .my-contf-p{
   position: relative;
