@@ -1,18 +1,20 @@
 {
-  "pages":[
+  "pages": [
+    "pages/shoushi/sh",
     "pages/wifi/mp3Con",
     "pages/login/logph",
     "pages/index/index",
     "pages/wifi/wifi",
     "pages/login/login"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "全民扫码通",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-  "requiredBackgroundModes":[
+  "requiredBackgroundModes": [
     "audio"
-  ]
+  ],
+  "sitemapLocation": "sitemap.json"
 }
